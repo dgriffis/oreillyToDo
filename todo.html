@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <title>To-Do List</title>
+        <meta charset="utf-8">
+            <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+            <script src="Modernizr.js"></script>
+            <link rel="stylesheet" href="todo.css">
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    form {
+                        margin-bottom: 20px;
+                    }
+                    div#map_canvas {
+                        width: 400px;
+                        height: 400px;
+                    }
+                    </style>
+                <script>
+                    Modernizr.load([
+                                    "todo.js",
+                                    {
+                                    test: Modernizr.geolocation,
+                                    yep : "geolocation.js",
+                                    nope: "noGeolocation.js"
+                                    },
+                                    {
+                                    test: Modernizr.localstorage,
+                                    yep: "localStorage.js",
+                                    nope: "noLocalStorage.js",
+                                    complete: function() {
+                                    init();
+                                    }
+                                    }
+                                    ]);
+                    </script>
+    </head>
+    <body>
+        <h1>My To Do List</h1>
+        <form>
+            <form>
+                <label for="searchTerm">Search for: </label>
+                <input type="text" id="searchTerm" size="35"
+                    placeholder="search term">
+                    <input type="button" id="searchButton" value="Search"><br><br>
+                        </form>
+            
+            <fieldset>
+                <legend>Add a new to-do item</legend>
+                <div class="tableContainer">
+                    <div class="tableRow">
+                        <label for="task">Task: </label>
+                        <input type="text" id="task" size="35" placeholder="get milk">
+                            </div>
+                    <div class="tableRow">
+                        <label for="who">Who should do it: </label>
+                        <input type="text" id="who" placeholder="Scott">
+                            </div>
+                    <div class="tableRow">
+                        <label for="dueDate">Due Date: </label>
+                        <input type="date" id="dueDate">
+                            </div>
+                    <div class="tableRow">
+                        <label for="submit"></label>
+                        <input type="button" id="submit" value="submit">
+                            </div>
+                    </fieldset>
+        </form>
+        
+        <ul id="todoList">
+        </ul>
+        
+        <div id="map_canvas">
+        </div>
+        
+        <div>
+            <h2>Results</h2>
+            <ul id="matchResultsList">
+            </ul>
+        </div>
+        
+    </body>
+</html>             
